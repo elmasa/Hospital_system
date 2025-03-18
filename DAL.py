@@ -48,7 +48,7 @@ class Mysql(Database):
     connection=pymysql.connect(host='localhost',user='root',
     password='1234',database='hospital')
     my_cursor=connection.cursor()
-    row=my_cursor.execute()
+    
     if connection.connect:
        print( 'Succesfully Connecting to MYSQL Database ' )
     else:

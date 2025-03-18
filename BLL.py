@@ -32,10 +32,7 @@ class Employee(ABC):
 new_employee=Employee(1,'elmahdy',44,'3-9-1980','01223146453','faculty of commerce','1-1-2020','elmahdy.tamam@gmail.com',False,10.0000)
 print(new_employee.id) 
 my_sql=Mysql()
-my_cursor=my_sql.connect_db()
-
 db_operation=DataHandler(my_sql)
-
 new_employee_insert="insert into employee(id,name,birthdate,phone,degree,hiredate,email,statusmarital,salary) values()"
 db_operation.save_data(new_employee)
 
