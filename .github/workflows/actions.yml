@@ -3,7 +3,7 @@ name: python_hospital
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   test_hosppital_app:
