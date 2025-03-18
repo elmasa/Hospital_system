@@ -1,0 +1,25 @@
+@startuml DAL_Diagram
+ 
+ 
+abstract class Database{
+   +{abstract} connect_Db()
+   +{abstract} insert_Db()
+   +{abstract} delete_Db()
+   +{abstract} search_Db()
+}
+
+class My_Sql{
+  + connect_Db()
+  + insert_Db()
+  + delete_Db()
+  + search_Db()
+
+}
+
+class DataHandler{
+    + DataHandler(database:Database)
+    
+}
+
+My_Sql --|> Database : "My_Sql is a type of Database"
+@enduml

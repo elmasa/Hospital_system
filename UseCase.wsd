@@ -1,0 +1,44 @@
+@startuml Cases_diagram
+
+actor Employee
+actor Manager
+actor Doctor
+actor Dataentry
+actor patient
+
+rectangle "profile creation" {
+    usecase "add" as insert_profile
+    usecase "delete" as delete_profile
+    usecase "search" as search_profile
+   
+    
+}
+
+rectangle "create_reservation"{
+    usecase "insert_patient" as create_patient
+    usecase "search_patient" as search_patient
+    usecase "delete_patient" as delete_patient
+}
+
+rectangle "doctor tasks"{
+    usecase "search_patient" as search_patient
+    usecase "prescription" as wrote_prescription
+}
+
+Employee --> insert_profile
+Employee --> delete_profile
+Employee --> search_profile
+Manager --> insert_profile
+Manager --> delete_profile
+Manager --> search_profile
+Doctor --> insert_profile
+Doctor --> delete_profile
+doctor --> search_profile
+Dataentry --> create_patient
+Dataentry --> search_patient
+Dataentry --> delete_patient
+Doctor --> search_patient
+Doctor --> wrote_prescription
+
+
+@enduml

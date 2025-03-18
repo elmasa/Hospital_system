@@ -1,0 +1,95 @@
+
+@startuml BLL_Diagram
+ 
+ 
+abstract class Employee{
+    + Employee(id:int,name:string,age:int,birthdate:string,
+    phone:string,degree:string,hiredate:string,email:string,
+    status:boolean,salary:float)
+    + add_Employee(employee:Employee) : void
+    + Delete_Employee(id:int) : void
+    + search_Employee(employee:Employee) : void
+    + show_data():void
+}
+
+class Manager{
+    + Manager(department_name,mgrid)
+    + add_Manager(manager:Manager): void
+    + delete_Manager(id:int): void
+    + search_Manager(manager:Manager) : void
+    + show_data():void
+}
+
+class DataEntry{
+
+}
+
+class Doctor{
+   + Doctor(specialization:string, title:string,patient:Patient)
+   + add_doctor(doctor:Doctor) : void
+   + delte_doctor(id:int) : void
+   + search_doctor(doctor:Doctor):void
+   + show_data():void
+
+}
+
+
+
+class Patient{
+    + Patient(id:int,name:string,age:int,birthdate:string,
+    phone:string,hiredate:string,email:string,job:string
+    )
+    + add_patient(patient:Patient) : void
+    + delete_Patient(id:int):void
+    + search_Patient(patient:Patient):void
+    
+}
+
+abstract class Prescription_type{
+    +{abstract} get_prescription()
+}
+ 
+class  Prescription_Medicine{
+   + get_prescription():string
+}
+
+class  Prescription_Analyze{
+   + get_prescription():string
+}
+
+class Prescription_Scan{
+     + get_prescription():string
+}
+
+class Prescription_SurgicalOperation{
+    + get_prescription():string
+}
+
+class PrescriptionFactory{
+    + create_prescription(perscription_type:Prescription_Type):Prescription
+}
+
+class Prescription{
+    +Prescription(perscription_type:Prescription_Type)
+    + print():void
+}
+
+class Prescription_Details{
+ + Prescription_Details(id:int,doctor:Doctor,patient:Patient,prescription:Prescription,prescription_date:str)
+}
+
+ 
+Manager --|> Employee : "Manager is a  Employee"
+Doctor --|> Employee : "Doctor is a Employee"
+DataEntry --|> Employee : "DataEntry is an Employee"
+Patient *-- Doctor : "Doctor have a patient" 
+Prescription_Medicine --|> Prescription_type
+Prescription_Analyze --|> Prescription_type
+Prescription_Scan --|> Prescription_type
+Prescription_SurgicalOperation --|> Prescription_type
+Prescription_Details --|> Prescription
+Prescription_Details *-- Doctor
+Prescription_Details *-- Patient
+Prescription_Details *-- Prescription
+
+@enduml
