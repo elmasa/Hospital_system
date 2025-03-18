@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  test_hosppital_app:
+  test_hospital_app:
     runs-on: ubuntu-latest
     
     steps:
