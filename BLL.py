@@ -30,12 +30,15 @@ class Employee(ABC):
 
 
 new_employee=Employee(1,'elmahdy',44,'3-9-1980','01223146453','faculty of commerce','1-1-2020','elmahdy.tamam@gmail.com',False,10.0000)
-##print(new_employee.id) 
+#print(new_employee.id) 
 my_sql=Mysql()
 db_operation=DataHandler(my_sql)
+'''
 db_operation.configure_data("insert into employee(id,name,age,birth,phone,degree,hiredate,email,status_married,salary)values(%s,%s,%s,%s,%s,%s,%s,%s,%s);",args=(
- 
+ new_employee.id,new_employee.name,new_employee.age,new_employee.birthdate,new_employee.phone,new_employee.degree,new_employee.hiredate,
+ new_employee.email,new_employee.status,new_employee.salary
 ))
+'''
 #db_operation.configure_data("insert into employee(id,name,age)values({id},{name},{age});")
 db_operation.save_data(new_employee)
 
