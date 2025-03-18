@@ -80,6 +80,7 @@ class DataHandler :
         Mysql.connection.connect()
         my_cursor=my_sql.connection.cursor()
         row= my_cursor.execute(data)
+        
         Mysql.connection.commit()
         Mysql.connection.close()   
         
@@ -96,7 +97,7 @@ class DataHandler :
  
 my_sql=Mysql()
 db_operation=DataHandler(my_sql)
-db_operation.configure_data("insert into employee(id,name,age,birth,phone,degree,hiredate,email,status_married,salary)values(1,'elmahdy',44,'3-9-1980','01223146453','faculty of commerce','1-1-2020','elmahdy.tamam@gmail.com',False,10.0000);")
+db_operation.configure_data("insert into employee(id,name,age,birth,phone,degree,hiredate,email,status_married,salary)values(2,'ahmed',24,'3-9-2000','0123456666','faculty of commerce','1-1-2020','ahmed@gmail.com',False,5000);")
 
 db_operation.save_data(' (id = 1 ,name = "ahmed", age = 25) ') 
 db_operation.search_data(' (id =1) ')
