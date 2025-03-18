@@ -41,28 +41,29 @@ summary: this class is used as the operation for the mysql database
         check the connection , CRUD operations
 '''
 class Mysql(Database):
-
-
- def connect_db(self):
-        #implementation for connect to mysql database
+    
     connection=pymysql.connect(host='localhost',user='root',
     password='1234',database='hospital')
     my_cursor=connection.cursor()
+
+    def connect_db(self):
+        #implementation for connect to mysql database
+   
     
-    if connection.connect:
+     if  Mysql.connection.connect:
        print( 'Succesfully Connecting to MYSQL Database ' )
-    else:
+     else:
         raise ConnectionError('failed to connect to MYSQL database')   
     
- def insert_db(self,data):
+    def insert_db(self,data):
         
         #row=my_cursor.execute(data)
         print( f'Saving {data} to MYSQL Database ' )
 
- def delete_db(self,data):
+    def delete_db(self,data):
         print( f'Delete {data} from MYSQL Database ' )   
 
- def search_db(self,data):
+    def search_db(self,data):
          print( f'found {data} from MYSQL Database ' )
     
 
@@ -88,6 +89,7 @@ class DataHandler :
  
 my_sql=Mysql()
 db_operation=DataHandler(my_sql)
+
 db_operation.save_data(' (id = 1 ,name = "ahmed", age = 25) ') 
 db_operation.search_data(' (id =1) ')
 db_operation.delete_data( ' ( id=1)')
