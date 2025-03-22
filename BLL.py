@@ -12,6 +12,11 @@ class Employee(ABC):
 
     def __init__(self,id:int,name:str,age:str,birthdate:str,
     phone:str,degree:str,hiredate:str,email:str,status:bool,salary:float):
+        if(id or name or email)==' ':
+            raise ValueError( 'value cannot be empty')
+        if("@" not in email):
+            raise ValueError('email not in correct format')
+        
         self.id=id
         self.name=name
         self.age=age
@@ -29,17 +34,19 @@ class Employee(ABC):
        
 
 
-new_employee=Employee(1,'elmahdy',44,'3-9-1980','01223146453','faculty of commerce','1-1-2020','elmahdy.tamam@gmail.com',False,10.0000)
+new_employee=Employee(1,'elmahdy',44,'3-9-1980','01223146453','faculty of commerce','1-1-2020','elmahdy.tamam@gmail.com',False,10000)
 #print(new_employee.id) 
 my_sql=Mysql()
 db_operation=DataHandler(my_sql)
+data=(new_employee.id,new_employee.name,new_employee.age,new_employee.birthdate,new_employee.phone,new_employee.degree,new_employee.hiredate,
+ new_employee.email,new_employee.status,new_employee.salary)
 '''
-db_operation.configure_data("insert into employee(id,name,age,birth,phone,degree,hiredate,email,status_married,salary)values(%s,%s,%s,%s,%s,%s,%s,%s,%s);",args=(
- new_employee.id,new_employee.name,new_employee.age,new_employee.birthdate,new_employee.phone,new_employee.degree,new_employee.hiredate,
- new_employee.email,new_employee.status,new_employee.salary
-))
+db_operation.configure_data("insert into employee(id,name,age,birth,phone,degree,hiredate,email,status_married,salary)values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);",data)
 '''
-#db_operation.configure_data("insert into employee(id,name,age)values({id},{name},{age});")
+cursor=Mysql.connection.cursor()
+cursor.execute("insert into employee(id,name,age,birth,phone,degree,hiredate,email,status_married,salary)values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);",data)
+
+my_sql.connection.commit()
 db_operation.save_data(new_employee)
 
 

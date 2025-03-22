@@ -76,9 +76,9 @@ class DataHandler :
         else:
             raise TypeError('invalid database  type')
         
-    def configure_data(self,data):
+    def configure_data(self,data,args=None):
         Mysql.connection.connect()
-        my_cursor=my_sql.connection.cursor()
+        my_cursor=Mysql.connection.cursor()
         row= my_cursor.execute(data)
         
         Mysql.connection.commit()
@@ -95,12 +95,12 @@ class DataHandler :
         self.database.search_db(data)      
             
  
-my_sql=Mysql()
-db_operation=DataHandler(my_sql)
-db_operation.configure_data("insert into employee(id,name,age,birth,phone,degree,hiredate,email,status_married,salary)values(2,'ahmed',24,'3-9-2000','0123456666','faculty of commerce','1-1-2020','ahmed@gmail.com',False,5000);")
+#my_sql=Mysql()
+#db_operation=DataHandler(my_sql)
+#db_operation.configure_data("insert into employee(id,name,age,birth,phone,degree,hiredate,email,status_married,salary)values(2,'ahmed',24,'3-9-2000','0123456666','faculty of commerce','1-1-2020','ahmed@gmail.com',False,5000);")
 
-db_operation.save_data(' (id = 1 ,name = "ahmed", age = 25) ') 
-db_operation.search_data(' (id =1) ')
-db_operation.delete_data( ' ( id=1)')
+#db_operation.save_data(' (id = 1 ,name = "ahmed", age = 25) ') 
+#db_operation.search_data(' (id =1) ')
+#db_operation.delete_data( ' ( id=1)')
 
         
