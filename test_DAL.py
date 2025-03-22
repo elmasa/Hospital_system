@@ -5,8 +5,8 @@ from DAL import *
 @pytest.fixture
 def return_connection() :
     connection = pymysql.connect(
-    host = 'localhost',user = 'root', 
-    password='1234',database='hospital')
+    host = '127.0.0.1',user = 'root', 
+    password='1234',database='hospital' ,port=3306)
     return connection
         
 
@@ -44,7 +44,7 @@ def test_get_employee(return_connection):
     my_data=Connection.cursor()
     my_data.execute('select * from employee where id=%s;',1)
     row=my_data.fetchone()
-    assert row==(1,'elmahdy',44,'3-9-1980','01223146453','faculty of commerce','1-1-2020','elmahdy.tamam@gmail.com',False,10.0000) 
+    assert row==(1,'elmahdy',44,'3-9-1980','01223146453','faculty of commerce','1-1-2020','elmahdy.tamam@gmail.com',False,10000) 
     print ('get data success')
     Connection.close()
 
